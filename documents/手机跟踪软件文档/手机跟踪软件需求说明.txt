@@ -1,0 +1,11 @@
+网站设计	参考http://www.spyapp.net/，网站栏目：首页 特色功能 功能收费 帮助 下载 
+
+在线支付	使用支付宝和网银方式支付，付款前需填写用户名，付款完成传入用户名到app后台
+
+软件下载	下载页面增加各种下载方式
+1、各大市场搜索“app名字”下载
+2、扫描二维码下载
+3、直接点击下载APK后通过数据线或读卡器安装到手机
+
+http://finder.unking.cn/download.jsp
+http://www.spyapp.net/downloads.html
