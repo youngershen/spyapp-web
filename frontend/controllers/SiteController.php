@@ -13,6 +13,9 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
+
+use common\modules\UserModule\models\User;
+
 /**
  * Site controller
  */
@@ -34,7 +37,7 @@ class SiteController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout'],
+                       'actions' => ['logout'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -168,4 +171,11 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+
+    public function actionSay($message = "fuck"){
+
+        return $this->render('say', ['message' => $message]);
+
+    }
+
 }
