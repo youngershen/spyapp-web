@@ -3,6 +3,7 @@ namespace common\models;
 
 use Yii;
 use yii\base\Model;
+use common\models\User;
 
 /**
  * Login form
@@ -60,6 +61,7 @@ class LoginForm extends Model
             return false;
         }
     }
+
 
     /**
      * Finds user by [[username]]

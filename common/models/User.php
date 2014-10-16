@@ -19,7 +19,7 @@ use Yii;
  *
  * @property Article[] $articles
  */
-class User extends \yii\db\ActiveRecord
+class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
     /**
      * @inheritdoc
@@ -32,10 +32,11 @@ class User extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+
     public function rules()
     {
         return [
-            [['username', 'password_hash', 'email', 'cellphone', 'created_at', 'updated_at'], 'required'],
+            [['username', 'password_hash', 'email', 'cellphone' ], 'required'],
             [['role', 'status', 'created_at', 'updated_at'], 'integer'],
             [['username', 'password_hash', 'email', 'cellphone'], 'string', 'max' => 255]
         ];
@@ -65,5 +66,50 @@ class User extends \yii\db\ActiveRecord
     public function getArticles()
     {
         return $this->hasMany(Article::className(), ['author_id' => 'id']);
+    }
+    
+    public function set_password($password)
+    {
+        $this->password_hash = md5($password);
+    }
+
+    public function validatePassword($password)
+    {
+
+        if($this->password_hash == md5($password)){
+            return true;
+        }
+        return false;
+    }
+
+    public static function findIdentity($id)
+    {
+
+        return static::findOne($id);
+    }
+
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        return static::findOne(['access_token' => $token] );
+    }
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getAuthKey()
+    {
+        //return $this->authkey;
+    }
+    public function validateAuthKey($authKey)
+    {
+        return $this->authKey == $authKey;
+    }
+
+    public static function findByUsername($username)
+    {
+
+        $user = User::find()->where(['username' => $username])->one();
+        return $user;
     }
 }

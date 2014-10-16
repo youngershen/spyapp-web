@@ -81,8 +81,19 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+
+            $user = $model->getUser();
+
+            if( $user->role == 1){
+
+                return $this->render('admin_index');
+            }
+
             return $this->goBack();
+
         } else {
+
+
             return $this->render('login', [
                 'model' => $model,
             ]);
@@ -102,6 +113,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
                 Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
+                
             } else {
                 Yii::$app->session->setFlash('error', 'There was an error sending email.');
             }
@@ -124,9 +136,11 @@ class SiteController extends Controller
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
             if ($user = $model->signup()) {
-                if (Yii::$app->getUser()->login($user)) {
-                    return $this->goHome();
-                }
+
+                $new_user = Yii::$app->getUser($user->username); 
+                if ($new_user->login($user)) {
+                  return $this->goHome();
+              }
             }
         }
 
@@ -172,10 +186,13 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionSay($message = "fuck"){
-
+    public function actionSay($message = "fuck")
+    {
         return $this->render('say', ['message' => $message]);
-
     }
-
+    
+    public function actionReg()
+    {
+        return $this->render('reg');
+    }
 }

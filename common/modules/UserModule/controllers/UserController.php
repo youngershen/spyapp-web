@@ -103,6 +103,16 @@ class UserController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionUserReg()
+    {
+        return $this->render('user_reg');
+    }
+    public function actionSay()
+    {
+        return $this->render('user_reg');
+    }
+
+
     /**
      * Finds the User model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

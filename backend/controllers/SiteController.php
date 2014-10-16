@@ -6,6 +6,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use common\models\LoginForm;
 use yii\filters\VerbFilter;
+use common\models\User;
 
 /**
  * Site controller
@@ -65,9 +66,15 @@ class SiteController extends Controller
         }
 
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+
+        if ($model->load(Yii::$app->request->post()) && ($user = $model->login())) {
             return $this->goBack();
         } else {
+
+            if($user->role == 1){
+
+                return $this->render('admin');
+            }
             return $this->render('login', [
                 'model' => $model,
             ]);
