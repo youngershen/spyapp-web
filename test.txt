@@ -1,0 +1,14 @@
+总用量 48
+drwxr-xr-x 7 youngershen youngershen 4096 10月 16 10:32 .
+drwxrwxrwx 9 youngershen youngershen 4096 10月 14 10:14 ..
+drwxr-xr-x 2 youngershen youngershen 4096  6月 13 09:57 Application
+-rw-r--r-- 1 youngershen youngershen  416  6月 13 09:57 composer.json
+drwxr-xr-x 8 youngershen youngershen 4096 10月 16 10:32 .git
+-rw-r--r-- 1 youngershen youngershen   20 10月 14 10:15 .gitignore
+-rw-r--r-- 1 youngershen youngershen  203  6月 13 09:57 .htaccess
+drwxr-xr-x 3 youngershen youngershen 4096 10月 16 10:31 .idea
+-rw-r--r-- 1 youngershen youngershen 1009  6月 13 09:57 index.php
+drwxr-xr-x 2 youngershen youngershen 4096  6月 13 09:57 Public
+-rw-r--r-- 1 youngershen youngershen 2681  6月 13 09:57 README.md
+-rw-r--r-- 1 youngershen youngershen    0 10月 16 10:33 test.txt
+drwxr-xr-x 8 youngershen youngershen 4096  6月 13 09:57 ThinkPHP

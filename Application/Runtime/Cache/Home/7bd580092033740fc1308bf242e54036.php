@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?>非法数据对象！
